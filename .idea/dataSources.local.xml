@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="lode_info" uuid="2ea5d735-1c6a-41b9-a5f9-0d90814f69d5">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>lode_info.*</schema-pattern>
+      <default-schemas>lode_info.*</default-schemas>
+    </data-source>
+  </component>
+</project>

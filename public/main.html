@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="lodeinfo">
+<head>
+	<meta charset="UTF-8">
+	<title>Новости ЛОДЭ Гродно</title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body ng-controller="infoController as infoCtrl">
+
+<!-- HEADER START -->
+
+<div class="header">
+
+	<div class="logo">
+		<div class="logo_image">
+			<img src="assets/images/logo.jpg">
+		</div>
+		<div class="logo_text">
+			<h1>Новости ЛОДЭ</h1>
+			<h2>Гродно</h2>
+		</div>
+	</div>
+
+</div>
+
+<!-- HEADER END -->
+
+<!-- NEWS BLOCK START -->
+
+<div class="news">
+	<div ng-repeat="news in news_list">
+
+		<h1>{{news.title}}</h1> 
+		<img ng-src="{{news.image}}"> <br>
+		<p>{{news.text}}</p> <br>
+		<hr>
+
+	</div>
+</div>
+<!-- NEWS BLOCK END -->
+	
+</body>
+</html>

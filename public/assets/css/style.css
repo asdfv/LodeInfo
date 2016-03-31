@@ -1,0 +1,39 @@
+body {
+	background-color: #e5ffe5;
+	text-align: center;
+}
+
+.header {
+	background-color: darkgreen;
+	height: 150px;
+	font-size: 0.8em;
+	padding: 10px 0 10px 60px;
+	border-radius: 5px;
+	text-align: left;
+}
+
+
+
+.logo_text h1, .logo_text h2, .logo_text h1 a {
+	font: normal 300% 'century gothic', arial, sans-serif;
+	margin: 0 0 0 0;
+	text-decoration: none;
+	color: #fff;
+} 
+
+.logo_text h2 {
+	font-size: 1.2em;
+	color: MediumSeaGreen;
+}
+
+.logo_text h1 a {
+	font-size: 1.2em;
+}
+
+.news h1 {
+	font: bold 200% 'century gothic', arial, sans-serif;
+}
+
+.news p {
+	font: 150% serif;
+}
