@@ -7,9 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("lodeInfo")
-@EntityScan(basePackages = "lodeInfo")
-@ComponentScan("lodeInfo")
 public class StartApp {
 
     public static void main(String[] args) {
