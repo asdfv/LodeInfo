@@ -1,7 +1,7 @@
-package lodeInfo.controllers;
+package lodeInfo.controller;
 
 import lodeInfo.model.NewsEntity;
-import lodeInfo.model.NewsRepository;
+import lodeInfo.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

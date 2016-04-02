@@ -1,4 +1,4 @@
-package lodeInfo.controllers;
+package lodeInfo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
