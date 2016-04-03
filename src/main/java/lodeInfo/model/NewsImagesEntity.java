@@ -1,4 +1,4 @@
-package lodeInfo.model;
+package lodeinfo.model;
 
 
 import javax.persistence.*;
@@ -12,9 +12,8 @@ public class NewsImagesEntity {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @Column(name = "id_news")
-    private Long id_news;
+//    @ManyToOne
+//    private NewsEntity id_news;
 
     @Column(name = "url")
     private String url;
@@ -27,13 +26,13 @@ public class NewsImagesEntity {
         this.id = id;
     }
 
-    public Long getId_news() {
-        return id_news;
-    }
-
-    public void setId_news(Long id_news) {
-        this.id_news = id_news;
-    }
+//    public NewsEntity getId_news() {
+//        return id_news;
+//    }
+//
+//    public void setId_news(NewsEntity id_news) {
+//        this.id_news = id_news;
+//    }
 
     public String getUrl() {
         return url;
@@ -42,4 +41,6 @@ public class NewsImagesEntity {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 }

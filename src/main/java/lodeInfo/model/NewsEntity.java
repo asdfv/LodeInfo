@@ -1,7 +1,6 @@
-package lodeInfo.model;
+package lodeinfo.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "news")
@@ -12,8 +11,8 @@ public class NewsEntity {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany
-    private List<NewsImagesEntity> newsImages;
+//    @OneToMany
+//    private List<NewsImagesEntity> newsImages;
 
     @Column(name = "title")
     private String title;
@@ -21,13 +20,13 @@ public class NewsEntity {
     @Column(name = "text")
     private String text;
 
-    public List<NewsImagesEntity> getNewsImages() {
-        return newsImages;
-    }
-
-    public void setNewsImages(List<NewsImagesEntity> newsImages) {
-        this.newsImages = newsImages;
-    }
+//    public List<NewsImagesEntity> getNewsImages() {
+//        return newsImages;
+//    }
+//
+//    public void setNewsImages(List<NewsImagesEntity> newsImages) {
+//        this.newsImages = newsImages;
+//    }
 
     public Long getId() {
         return id;
@@ -52,4 +51,6 @@ public class NewsEntity {
     public void setText(String text) {
         this.text = text;
     }
+
+
 }

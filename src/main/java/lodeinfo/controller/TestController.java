@@ -1,4 +1,4 @@
-package lodeInfo.controller;
+package lodeinfo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @RequestMapping("test")
+    @RequestMapping(value = "/test")
     public String test() {
         return "Hello, Baby!";
     }

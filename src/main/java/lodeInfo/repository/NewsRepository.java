@@ -1,6 +1,6 @@
-package lodeInfo.repository;
+package lodeinfo.repository;
 
-import lodeInfo.model.NewsEntity;
+import lodeinfo.model.NewsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
