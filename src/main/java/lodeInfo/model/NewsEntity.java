@@ -20,7 +20,18 @@ public class NewsEntity {
     @Column(name = "text")
     private String text;
 
-//    public List<NewsImagesEntity> getNewsImages() {
+    @Column(name = "image")
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    //    public List<NewsImagesEntity> getNewsImages() {
 //        return newsImages;
 //    }
 //
