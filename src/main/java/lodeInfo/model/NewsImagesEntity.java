@@ -13,10 +13,19 @@ public class NewsImagesEntity {
     private Long id;
 
 //    @ManyToOne
-//    private NewsEntity id_news;
+//    @JoinColumn(name = "id_news")
+//    private NewsEntity newsEntity;
 
     @Column(name = "url")
     private String url;
+
+//    public NewsEntity getNewsEntity() {
+//        return newsEntity;
+//    }
+//
+//    public void setNewsEntity(NewsEntity newsEntity) {
+//        this.newsEntity = newsEntity;
+//    }
 
     public Long getId() {
         return id;
@@ -25,14 +34,6 @@ public class NewsImagesEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public NewsEntity getId_news() {
-//        return id_news;
-//    }
-//
-//    public void setId_news(NewsEntity id_news) {
-//        this.id_news = id_news;
-//    }
 
     public String getUrl() {
         return url;

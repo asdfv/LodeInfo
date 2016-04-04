@@ -4,7 +4,7 @@
 
 	myApp.factory('NewsFactory', [
 		'$resource', function($resource){
-			return $resource('news/news.json');
+			return $resource('/findAll');
 		}
 		]);
 	

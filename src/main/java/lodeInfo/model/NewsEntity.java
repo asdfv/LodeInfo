@@ -11,7 +11,7 @@ public class NewsEntity {
     @Column(name = "id")
     private Long id;
 
-//    @OneToMany
+//    @OneToMany(mappedBy = "news")
 //    private List<NewsImagesEntity> newsImages;
 
     @Column(name = "title")

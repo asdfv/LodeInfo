@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="lode_info" uuid="2ea5d735-1c6a-41b9-a5f9-0d90814f69d5">
+    <data-source name="MySQL - lode_info@localhost" uuid="32674057-e09f-4cc6-873b-ae956e9ef31d">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>lode_info.*</schema-pattern>
