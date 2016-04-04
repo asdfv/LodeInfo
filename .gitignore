@@ -1,3 +1,5 @@
-.iml
-.target
-.idea
+/.idea
+/StartApp.bat
+*.iml
+/target
+/src/main/resources/application.properties
