@@ -1,57 +1,100 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="lodeinfo">
+<html ng-app="lodeinfo">
 <head>
-	<meta charset="UTF-8">
-	<title>Новости ЛОДЭ Гродно </title>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-	<script type="text/javascript" src="controller.js"></script>
+	<meta charset="UTF-8">
+	<title>ЛОДЭ.info</title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/controller_main.js"></script>
+	<script type="text/javascript" src="scripts/controller_news.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
-<body ng-controller="infoController as infoCtrl">
+<body ng-controller="newsController">
 
-<!-- HEADER START -->
-
-<div class="header">
-
-	<div class="logo">
-		<div class="logo_image">
-			<img src="assets/images/logo.jpg">
-		</div>
-		<div class="logo_text">
-			<h1>Новости ЛОДЭ (Пока только тестируется =) )</h1>
-			<h2>Гродно</h2>
-		</div>
-	</div>
-
-	<div class="menubar">
-     	<ul class="menu">
-      	<li class="selected"><a href="/main.html">Новости</a></li>
-        <li><a href="/pages/manuals/TimeTableManual.html">Инструкция Time Table</a></li>
-        </ul>    
-    </div>
-
-
-</div>
-
-<!-- HEADER END -->
+<!-- Include header -->
+<div ng-include="'header.html'"></div>
 
 <!-- NEWS BLOCK START -->
-
+<br><br>
 <div class="news">
-	<div ng-repeat="news in news_list">
 
-		<h1>{{news.title}}</h1> 
-		<img ng-src="{{news.image}}"> <br>
-		<p>{{news.text}}</p> <br>
-		<hr>
 
+
+	<h1 ng-show="!editMode">НОВОСТИ</h1>
+
+	<div ng-show="!editMode" style="text-align: right">
+	<input  class="pages_buttons" type="button" onClick="location.href='pages/addNews.html'" value='Добавить новость'>
 	</div>
+
+	<div class="button_block" ng-show="!editMode">
+		<button class="pages_buttons" ng-show="pageNum > 1" ng-click="loadPage(0)">0</button> <!--Первая (нулевая)-->
+		<button class="pages_buttons" ng-show="pageNum > 0" ng-click="loadPage(pageNum - 1)">{{pageNum - 1}}</button> <!--Прошлая-->
+		<button class="current_button" ng-click="loadPage(pageNum)">{{pageNum}}</button> <!--Прошлая-->
+		<button class="pages_buttons" ng-show="pageNum < totalPages - 1" ng-click="loadPage(pageNum + 1)">{{pageNum + 1}}</button> <!--Следующая-->
+		<button class="pages_buttons" ng-show="pageNum < totalPages - 2" ng-click="loadPage(totalPages - 1)">{{totalPages - 1}}</button> <!--Последняя-->
+		<hr><br>
+	</div>
+
+	<div ng-repeat="news in news_list | orderBy: '-lastEdit'">
+
+		<div ng-show="!editMode">
+
+			<h1>{{news.title}}</h1> <br>
+
+			<a href ng-click="show = true">Развернуть...</a>
+			<a href ng-click="show = false">Свернуть...</a>
+	
+			<p class="short_text" ng-class="{full_text: show}">{{news.text}}...  </p>
+
+			<br>
+			<div class="created_on">
+                <p> Размещено: {{news.createdOn | date:'HH:mm / yyyy-MM-dd'}} <br> Последнее редактирование: {{news.lastEdit  | date:'HH:mm / yyyy-MM-dd'}}</p>
+            </div>
+			<br>
+			
+			<button class="pages_buttons" ng-click="deleteNews(news.id)">Удалить</button>
+			<button class="pages_buttons" ng-click="editNews(news.id)">Изменить</button>
+			<hr>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="button_block" ng-show="!editMode">
+		<button class="pages_buttons" ng-show="pageNum > 1" ng-click="loadPage(0)">0</button> <!--Первая (нулевая)-->
+		<button class="pages_buttons" ng-show="pageNum > 0" ng-click="loadPage(pageNum - 1)">{{pageNum - 1}}</button> <!--Прошлая-->
+		<button class="current_button" ng-click="loadPage(pageNum)">{{pageNum}}</button> <!--Прошлая-->
+		<button class="pages_buttons" ng-show="pageNum < totalPages - 1" ng-click="loadPage(pageNum + 1)">{{pageNum + 1}}</button> <!--Следующая-->
+		<button class="pages_buttons" ng-show="pageNum < totalPages - 2" ng-click="loadPage(totalPages - 1)">{{totalPages - 1}}</button> <!--Последняя-->
+	</div>
+
+	<br>
+
+
+		<!-- EDIT BLOCK START -->
+		<form ng-show="editMode" ng-submit="updateNews()">
+
+			<b>Заголовок</b><br>
+			<input type="text" size="100" ng-model="title"> <br><br>
+			<b>Текст новости</b><br>
+			<textarea rows="20" cols="102" ng-model="text"></textarea> <br>
+			<input class="pages_buttons" type="submit" value="Сохранить">
+			<button class="pages_buttons" ng-click="editMode = !editMode">Отменить</button>
+
+		</form>
+		<!-- EDIT BLOCK END -->
+
 </div>
 <!-- NEWS BLOCK END -->
-	
+
+
+<!-- Include footer -->
+<div ng-include="'footer.html'"></div>
+
+
 </body>
 </html>

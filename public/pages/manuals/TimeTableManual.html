@@ -1,39 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="lodeinfo">
 <head>
     <meta charset="UTF-8">
     <title>Manual for TT</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="/Controller.js"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="/scripts/controller_main.js"></script>
+	<script type="text/javascript" src="/scripts/controller_foradmins.js"></script>
+	<script type="text/javascript" src="/scripts/controller_news.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 
-<body>
+<body ng-controller="newsController">
 
 <!-- HEADER START -->
-
-<div class="header">
-
-	<div class="logo">
-		<div class="logo_image">
-			<img src="/assets/images/logo.jpg">
-		</div>
-		<div class="logo_text">
-			<h1>Новости ЛОДЭ (Пока только тестируется =) )</h1>
-			<h2>Гродно</h2>
-		</div>
-	</div>
-
-	<div class="menubar">
-     	<ul class="menu">
-      	<li class="selected"><a href="/main.html">Новости</a></li>
-        <li><a href="/pages/manuals/TimeTableManual.html">Инструкция Time Table</a></li>
-        </ul>    
-    </div>
-
-
-</div>
-
+<!-- Include header -->
+   <div ng-include="'/header.html'"></div>
 <!-- HEADER END -->
 
 <div class="content">
@@ -68,7 +50,7 @@
 
 
 <!-- FOOTER START -->
-<div ng-include="'/pages/footer.html'"></div>
+<div ng-include="'/footer.html'"></div>
 <!-- FOOTER END -->
 	
 </body>

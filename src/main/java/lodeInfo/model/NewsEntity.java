@@ -1,9 +1,10 @@
 package lodeinfo.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
-@Table(name = "news")
+@Table(name = "news_for_all")
 public class NewsEntity {
 
     @Id
@@ -11,33 +12,33 @@ public class NewsEntity {
     @Column(name = "id")
     private Long id;
 
-//    @OneToMany(mappedBy = "news")
-//    private List<NewsImagesEntity> newsImages;
-
     @Column(name = "title")
     private String title;
 
     @Column(name = "text")
     private String text;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "created_on")
+    private Timestamp createdOn;
 
-    public String getImage() {
-        return image;
+    @Column(name = "last_edit")
+    private Timestamp lastEdit;
+
+    public Timestamp getLastEdit() {
+        return lastEdit;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setLastEdit(Timestamp lastEdit) {
+        this.lastEdit = lastEdit;
     }
 
-    //    public List<NewsImagesEntity> getNewsImages() {
-//        return newsImages;
-//    }
-//
-//    public void setNewsImages(List<NewsImagesEntity> newsImages) {
-//        this.newsImages = newsImages;
-//    }
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
 
     public Long getId() {
         return id;

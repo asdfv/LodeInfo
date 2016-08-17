@@ -1,24 +1,70 @@
 package lodeinfo.controller;
 
-        import lodeinfo.model.NewsEntity;
-        import lodeinfo.repository.NewsRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.web.bind.annotation.RequestMapping;
-        import org.springframework.web.bind.annotation.RequestMethod;
-        import org.springframework.web.bind.annotation.RestController;
+import lodeinfo.model.NewsEntity;
+import lodeinfo.repository.NewsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(
+        value = "/news")
 public class NewsController {
 
     @Autowired
     NewsRepository newsRepository;
 
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET, produces="application/json")
-    public List<NewsEntity> getNews() {
-        return newsRepository.findAll();
+    // Get page with 10 news
+    @RequestMapping(
+            value = "/findAll",
+            method = RequestMethod.GET)
+    public Page<NewsEntity> getNews(@RequestParam int offset) {
+        return newsRepository.findAllByOrderByLastEditDesc(new PageRequest(offset, 10));
     }
 
+    // Save
+    @RequestMapping(
+            value = "/save",
+            method = RequestMethod.POST)
+    public void addNews(@RequestBody NewsEntity news) {
+        newsRepository.save(news);
+    }
+
+    // Delete
+    @RequestMapping(
+            value = "/delete/{id}",
+            method = RequestMethod.DELETE)
+    public void delNews(@PathVariable Long id) {
+        newsRepository.delete(id);
+    }
+
+    // Get one
+    @RequestMapping(
+            value = "/get/{id}",
+            method = RequestMethod.GET)
+    public NewsEntity getNews(@PathVariable Long id) {
+        return newsRepository.findById(id);
+    }
+
+    // Update
+    @RequestMapping(
+            value = "/save/{id}",
+            method = RequestMethod.PUT)
+    public NewsEntity updateNews(@PathVariable Long id, @RequestBody NewsEntity news) {
+        NewsEntity newsForEdit = newsRepository.findById(id);
+
+        Calendar calendar = Calendar.getInstance();
+        Timestamp now = new java.sql.Timestamp(calendar.getTime().getTime());
+
+        newsForEdit.setText(news.getText());
+        newsForEdit.setTitle(news.getTitle());
+        newsForEdit.setLastEdit(now);
+        newsRepository.save(newsForEdit);
+
+        return newsForEdit;
+    }
 }

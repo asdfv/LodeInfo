@@ -1,13 +1,20 @@
 package lodeinfo.repository;
 
 import lodeinfo.model.NewsEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface NewsRepository extends JpaRepository<NewsEntity, Long> {
+public interface NewsRepository extends CrudRepository<NewsEntity, Long> {
 
-    List<NewsEntity> findAll();
+    Page<NewsEntity> findAllByOrderByLastEditDesc(Pageable pageable);
+
+    NewsEntity save(NewsEntity news);
+
+    void delete(Long id);
+
+    NewsEntity findById(Long id);
+
 }

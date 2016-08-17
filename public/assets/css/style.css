@@ -1,16 +1,3 @@
-input[type="text"] {
-	font: normal 100% 'trebuchet-ms', sans-serif;
-	padding: 2px;
-}
-
-input[type="submit"] {
-	padding: 4px;
-	cursor: pointer;
-	border: none;
-	border-radius: 5px;
-}
-
-
 input, textarea {
 	outline: none;
 	border: solid 1px #f2f2f2;
@@ -20,12 +7,53 @@ body {
 	background-color: #e5ffe5;
 }
 
-.content {
+.short_text {
+    line-height: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+.full_text {
+    overflow: visible;
+    height: auto;
+	white-space: pre-wrap;
+}
+
+.content, .news {
 	width: 1000px;
 	font-family: sans-serif, 'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
-    font-size: 0.9em;
-    padding: 0 195px 0 195px;
+    font-size: 16px;
+    /*padding: 0 260px 0 260px;*/
+    margin: auto;
 }
+
+.button_block {
+	text-align: center;
+}
+
+.pages_buttons, .current_button {
+	background-color: #9ee09e;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+.pages_buttons {
+	background-color: #4CAF50;
+}
+
+.current_button {
+	background-color: #b3ffb3;
+	color: black;
+}
+.pages_buttons:hover {
+	background-color: #c4edc4;
+}
+
 
 .content img {
 	vertical-align: bottom;
@@ -33,20 +61,33 @@ body {
 
 .header {
 	background-color: darkgreen;
-	height: 170px;
+	height: 100px;
 	font-size: 0.8em;
-	padding: 10px 0 10px 60px;
+	padding: 10px 0 30px 60px;
 	border-radius: 5px;
 }
 
+.logo {
+	height: 100%;
+	width: 100%;
+}
 
+.logo_image, .logo_text {
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px 0 0 0;
+}
+
+.logo_text {
+	padding: 0 0 0 40px;
+}
 
 .logo_text h1, .logo_text h2, .logo_text h1 a {
 	font: normal 300% 'century gothic', arial, sans-serif;
 	margin: 0 0 0 0;
 	text-decoration: none;
 	color: #fff;
-} 
+}
 
 .logo_text h2 {
 	font-size: 1.2em;
@@ -131,5 +172,9 @@ table, td {
 	text-decoration: none;
 	color: #fff;
 	float: right;
+}
+
+.created_on {
+    font: normal 75% 'century gothic', arial, sans-serif;
 }
 

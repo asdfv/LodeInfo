@@ -1,26 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - lode_info@localhost" uuid="32674057-e09f-4cc6-873b-ae956e9ef31d">
-    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+    <database-info product="MySQL" version="5.7.12-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
-    <schema name="" catalog="lode_info"/>
-    <table name="news" schema="" catalog="lode_info" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="title" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="text" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="news_images_ibfk_1" table="news_images" schema="" catalog="lode_info" columns="id_news"/>
-    </table>
-    <table name="news_images" schema="" catalog="lode_info" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="id_news" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="url" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="news_images_ibfk_1" columns="id_news" ref-table="news" ref-schema="" ref-catalog="lode_info" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="news_images_ibfk_1" unique="false" columns="id_news"/>
-    </table>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="lode_info"/>
+      <table id="2" parent="1" name="for_admins"/>
+      <table id="3" parent="1" name="news"/>
+      <table id="4" parent="1" name="news_images"/>
+      <column id="5" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="6" parent="2" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="7" parent="2" name="message">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="8" parent="2" name="created_on">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <key id="9" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="10" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="11" parent="3" name="title">
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="12" parent="3" name="text">
+        <data-type>mediumtext</data-type>
+      </column>
+      <column id="13" parent="3" name="created_on">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <key id="14" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="4" name="image">
+        <mandatory>1</mandatory>
+        <data-type>mediumblob</data-type>
+      </column>
+      <column id="17" parent="4" name="id_news">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="18" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
   </data-source>
 </component>
