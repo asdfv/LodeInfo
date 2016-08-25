@@ -30,8 +30,7 @@ body {
 	text-align: center;
 }
 
-.pages_buttons, .current_button {
-	background-color: #9ee09e;
+.pages_buttons, .current_button, .pages_buttons_del {
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -46,12 +45,20 @@ body {
 	background-color: #4CAF50;
 }
 
+.pages_buttons_del {
+    background-color: #ff6666;
+}
+
+.pages_buttons_del:hover {
+    background-color: #ffb3b3;
+}
+
 .current_button {
 	background-color: #b3ffb3;
 	color: black;
 }
 .pages_buttons:hover {
-	background-color: #c4edc4;
+	background-color: #83c985;
 }
 
 

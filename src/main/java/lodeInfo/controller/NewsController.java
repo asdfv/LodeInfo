@@ -18,6 +18,9 @@ public class NewsController {
     @Autowired
     NewsRepository newsRepository;
 
+    // Upload
+
+
     // Get page with 10 news
     @RequestMapping(
             value = "/findAll",
@@ -30,8 +33,8 @@ public class NewsController {
     @RequestMapping(
             value = "/save",
             method = RequestMethod.POST)
-    public void addNews(@RequestBody NewsEntity news) {
-        newsRepository.save(news);
+    public NewsEntity addNews(@RequestBody NewsEntity news) {
+        return newsRepository.save(news);
     }
 
     // Delete
