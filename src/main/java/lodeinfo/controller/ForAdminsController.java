@@ -1,7 +1,7 @@
 package lodeinfo.controller;
 
-import lodeinfo.model.NewsEntity;
-import lodeinfo.repository.NewsRepository;
+import lodeinfo.model.ForAdminsEntity;
+import lodeinfo.repository.ForAdminsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,17 +12,20 @@ import java.util.Calendar;
 
 @RestController
 @RequestMapping(
-        value = "/news")
-public class NewsController {
+        value = "/forAdmins")
+public class ForAdminsController {
 
     @Autowired
-    NewsRepository newsRepository;
+    ForAdminsRepository newsRepository;
+
+    // Upload
+
 
     // Get page with 10 news
     @RequestMapping(
             value = "/findAll",
             method = RequestMethod.GET)
-    public Page<NewsEntity> getNews(@RequestParam int offset) {
+    public Page<ForAdminsEntity> getNews(@RequestParam int offset) {
         return newsRepository.findAllByOrderByLastEditDesc(new PageRequest(offset, 10));
     }
 
@@ -30,7 +33,7 @@ public class NewsController {
     @RequestMapping(
             value = "/save",
             method = RequestMethod.POST)
-    public NewsEntity addNews(@RequestBody NewsEntity news) {
+    public ForAdminsEntity addNews(@RequestBody ForAdminsEntity news) {
         return newsRepository.save(news);
     }
 
@@ -46,7 +49,7 @@ public class NewsController {
     @RequestMapping(
             value = "/get/{id}",
             method = RequestMethod.GET)
-    public NewsEntity getNews(@PathVariable Long id) {
+    public ForAdminsEntity getNews(@PathVariable Long id) {
         return newsRepository.findById(id);
     }
 
@@ -54,8 +57,8 @@ public class NewsController {
     @RequestMapping(
             value = "/save/{id}",
             method = RequestMethod.PUT)
-    public NewsEntity updateNews(@PathVariable Long id, @RequestBody NewsEntity news) {
-        NewsEntity newsForEdit = newsRepository.findById(id);
+    public ForAdminsEntity updateNews(@PathVariable Long id, @RequestBody ForAdminsEntity news) {
+        ForAdminsEntity newsForEdit = newsRepository.findById(id);
 
         Calendar calendar = Calendar.getInstance();
         Timestamp now = new java.sql.Timestamp(calendar.getTime().getTime());

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - lode_info@localhost" uuid="32674057-e09f-4cc6-873b-ae956e9ef31d">
+    <data-source name="MySQL - news@localhost" uuid="973cbc81-c2dd-4e83-bef6-f03cf5a5f286">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>lode_info.*</schema-pattern>
-      <default-schemas>lode_info.*</default-schemas>
+      <schema-pattern>news.*</schema-pattern>
+      <default-schemas>news.*</default-schemas>
     </data-source>
   </component>
 </project>

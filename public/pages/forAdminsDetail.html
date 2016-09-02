@@ -1,0 +1,33 @@
+<h1>{{newsDetail.title}}</h1> <br>
+
+<div class="full_text">{{newsDetail.text}}...  </div>
+<br>
+
+<p ng-show="newsDetail.files.length > 0">Прикрепленные файлы:</p>
+
+<div ng-repeat="file in newsDetail.files">
+
+    <img ng-src="/forAdmins/downloadFile/{{ file.id }}"
+         ng-show="file.mimeType.indexOf('image') + 1"
+         style="max-width: 800px;"
+    >
+    <br>
+    {{file.name}} - {{(file.size/1048576).toFixed(3)}} MБ -
+    <a href ng-click="download(file.id)">скачать</a>
+    <hr>
+</div>
+
+<br>
+<div class="created_on">
+    <p>
+        Размещено: {{newsDetail.createdOn | date:'HH:mm / yyyy-MM-dd'}} <br>
+        Последнее редактирование: {{newsDetail.lastEdit  | date:'HH:mm / yyyy-MM-dd'}}
+    </p>
+</div>
+<br>
+
+<button class="pages_buttons_del" ng-click="deleteNews(newsDetail.id)">Удалить</button>
+<a class="pages_buttons" ng-href="/#/forAdmins/newsEdit/{{newsDetail.id}}">Изменить</a>
+<a href="/#/forAdmins" class="pages_buttons_del">Отменить</a>
+
+<hr>

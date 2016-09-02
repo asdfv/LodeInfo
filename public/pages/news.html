@@ -1,0 +1,36 @@
+<br><br>
+<div class="news">
+    <h1 ng-show="!editMode">НОВОСТИ</h1>
+
+    <div style="text-align: right">
+        <input  class="pages_buttons" type="button" onClick="location.href='/#/news/newsAdd'" value='Добавить новость'>
+    </div>
+
+    <!-- Include select page buttons -->
+    <div ng-include="'/pages/pageButtons.html'"></div>
+
+    <div ng-repeat="news in news_list | orderBy: '-lastEdit'">
+
+        <h1>{{news.title}}</h1> <br>
+
+        <div class="short_text">{{news.text}}</div><br>
+        <a ng-href="/#/news/newsDetail/{{news.id}}">Подробнее...</a>
+
+        <br>
+        <div class="created_on">
+            <p>
+                Размещено: {{news.createdOn | date:'HH:mm / yyyy-MM-dd'}} <br>
+                Последнее редактирование: {{news.lastEdit  | date:'HH:mm / yyyy-MM-dd'}}
+            </p>
+            <!--<p>-->
+                <!--Files attached: {{ news.files.length }} <br>-->
+                <!--Files sum size: {{ (sumSize(news.files)/1048576).toFixed(3) }} - MB-->
+            <!--</p>-->
+        </div>
+        <br>
+        <hr>
+    </div>
+
+    <!-- Include select page buttons -->
+    <div ng-include="'/pages/pageButtons.html'"></div>
+</div>

@@ -1,17 +1,13 @@
 package lodeinfo.model;
 
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "news_for_all")
-public class NewsEntity {
+@Table(name = "news_for_admins")
+public class ForAdminsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,17 +27,15 @@ public class NewsEntity {
     @Column(name = "last_edit")
     private Timestamp lastEdit;
 
-    @OneToMany(fetch = FetchType.LAZY /*not work =(*/, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "news_id", referencedColumnName = "id")
-    @Fetch(FetchMode.SELECT)
-        @BatchSize(size = 1)
-    private Set<FileEntity> files;
+    private Set<ForAdminsFileEntity> files;
 
-    public Set<FileEntity> getFiles() {
+    public Set<ForAdminsFileEntity> getFiles() {
         return files;
     }
 
-    public void setFiles(Set<FileEntity> files) {
+    public void setFiles(Set<ForAdminsFileEntity> files) {
         this.files = files;
     }
 

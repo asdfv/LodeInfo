@@ -1,0 +1,7 @@
+<div class="button_block">
+    <button class="pages_buttons" ng-show="pageNum > 1" ng-click="loadPage(0)">0</button> <!--First (zero page)-->
+    <button class="pages_buttons" ng-show="pageNum > 0" ng-click="loadPage(pageNum - 1)">{{pageNum - 1}}</button> <!--Previous-->
+    <button class="current_button" ng-click="loadPage(pageNum)">{{pageNum}}</button> <!--Current-->
+    <button class="pages_buttons" ng-show="pageNum < totalPages - 1" ng-click="loadPage(pageNum + 1)">{{pageNum + 1}}</button> <!--Next-->
+    <button class="pages_buttons" ng-show="pageNum < totalPages - 2" ng-click="loadPage(totalPages - 1)">{{totalPages - 1}}</button> <!--Last-->
+</div>

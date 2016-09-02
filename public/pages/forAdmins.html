@@ -1,0 +1,29 @@
+<br><br>
+<div class="news">
+    <h1 ng-show="!editMode">АДМИНИСТРАТОРАМ</h1>
+
+    <div style="text-align: right">
+        <input  class="pages_buttons" type="button" onClick="location.href='/#/forAdmins/newsAdd'" value='Добавить новость'>
+    </div>
+
+    <!-- Include select page buttons -->
+    <div ng-include="'/pages/pageButtons.html'"></div>
+
+    <div ng-repeat="news in news_list | orderBy: '-lastEdit'">
+
+        <h1>{{news.title}}</h1> <br>
+
+        <div class="short_text">{{news.text}}</div><br>
+        <a ng-href="/#/forAdmins/newsDetail/{{news.id}}">Подробнее...</a>
+
+        <br>
+        <div class="created_on">
+            <p> Размещено: {{news.createdOn | date:'HH:mm / yyyy-MM-dd'}} <br> Последнее редактирование: {{news.lastEdit  | date:'HH:mm / yyyy-MM-dd'}}</p>
+        </div>
+        <br>
+        <hr>
+    </div>
+
+    <!-- Include select page buttons -->
+    <div ng-include="'/pages/pageButtons.html'"></div>
+</div>
