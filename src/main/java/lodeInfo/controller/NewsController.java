@@ -18,13 +18,22 @@ public class NewsController {
     @Autowired
     NewsRepository newsRepository;
 
-    // Get page with 10 news
+    // Get page for someone
     @RequestMapping(
-            value = "/findAll",
-            method = RequestMethod.GET)
-    public Page<NewsEntity> getNews(@RequestParam int offset) {
-        return newsRepository.findAllByOrderByLastEditDesc(new PageRequest(offset, 10));
+            value = "/findForSomeone",
+            method = RequestMethod.GET
+    )
+    public Page<NewsEntity> getNewsForSomeone(@RequestParam int offset, @RequestParam String someone) {
+        return newsRepository.findNewsForSomeone(someone, new PageRequest(offset, 10));
     }
+
+    // Get page with 10 news
+//    @RequestMapping(
+//            value = "/findAll",
+//            method = RequestMethod.GET)
+//    public Page<NewsEntity> getNews(@RequestParam int offset) {
+//        return newsRepository.findNewsForAll(new PageRequest(offset, 10));
+//    }
 
     // Save
     @RequestMapping(

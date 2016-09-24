@@ -1,16 +1,13 @@
 package lodeinfo.model;
 
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.DefaultValue;
 import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "news_for_all")
+@Table(name = "news")
 public class NewsEntity {
 
     @Id
@@ -31,11 +28,19 @@ public class NewsEntity {
     @Column(name = "last_edit")
     private Timestamp lastEdit;
 
+    @Column(name = "for_whom")
+    @DefaultValue(value = "all")
+    private String forWhom;
+
     @OneToMany(fetch = FetchType.LAZY /*not work =(*/, cascade = CascadeType.ALL)
     @JoinColumn(name = "news_id", referencedColumnName = "id")
-    @Fetch(FetchMode.SELECT)
-        @BatchSize(size = 1)
+//    @Fetch(FetchMode.SELECT)
+//        @BatchSize(size = 1)
     private Set<FileEntity> files;
+
+
+    public NewsEntity() {
+    }
 
     public Set<FileEntity> getFiles() {
         return files;
@@ -85,5 +90,11 @@ public class NewsEntity {
         this.text = text;
     }
 
+    public String getForWhom() {
+        return forWhom;
+    }
 
+    public void setForWhom(String forWhom) {
+        this.forWhom = forWhom;
+    }
 }

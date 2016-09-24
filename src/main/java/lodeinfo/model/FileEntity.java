@@ -3,7 +3,7 @@ package lodeinfo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "news_for_all_files")
+@Table(name = "news_files")
 public class FileEntity {
 
     @Id

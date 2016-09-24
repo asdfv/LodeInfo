@@ -1,9 +1,11 @@
 <br><br>
 <div class="news">
-    <h1 ng-show="!editMode">НОВОСТИ</h1>
+    <h1 ng-show="someone === 'all'" style="text-align: center">НОВОСТИ</h1>
+    <h1 ng-show="someone === 'admin'" style="text-align: center">Заметки для администраторов</h1>
+    <br>
 
     <div style="text-align: right">
-        <input  class="pages_buttons" type="button" onClick="location.href='/#/news/newsAdd'" value='Добавить новость'>
+        <a ng-show="authenticated" class="pages_buttons"  ng-href="/#/news/newsAdd/{{someone}}">Добавить новость</a>
     </div>
 
     <!-- Include select page buttons -->

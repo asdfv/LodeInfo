@@ -4,7 +4,9 @@
 <textarea rows="15" cols="101" ng-model="newsEdit.text"></textarea> <br>
 
 <br>
+
 <p ng-show="newsEdit.oldFiles.length > 0"><b>Прикрепленные ранее файлы:</b></p>
+
 <div ng-repeat="file in newsEdit.oldFiles">
     <div ng-show="!file.forDelete">
         <div style="vertical-align: middle; display: inline-block">
@@ -35,4 +37,5 @@
 <br>
 
 <button class="pages_buttons" ng-click="updateNews()">Сохранить</button>
-<a class="pages_buttons_del"  href="/#/news" class="pages_buttons">Отменить</a>
+<button class="pages_buttons_del" ng-click="deleteNews(newsEdit.id)">Удалить</button>
+<a class="pages_buttons_del" href="/#/news" class="pages_buttons">Отменить</a>

@@ -1,9 +1,9 @@
-myApp.controller('forAdminsEditController', ['$scope', '$routeParams', 'forAdminsFactory', 'fileUpload',
-    function($scope, $routeParams, forAdminsFactory, fileUpload){
+myApp.controller('newsEditController', ['$scope', '$routeParams', 'NewsFactory', 'fileUpload',
+    function($scope, $routeParams, NewsFactory, fileUpload){
 
         var newsId = $routeParams.newsId;
 
-        forAdminsFactory.get({do:'get', id:newsId}).$promise.then(
+        NewsFactory.get({do:'get', id:newsId}).$promise.then(
             function(news){
                 $scope.newsEdit = {};
                 $scope.newsEdit.id = news.id;
@@ -12,6 +12,7 @@ myApp.controller('forAdminsEditController', ['$scope', '$routeParams', 'forAdmin
                 $scope.newsEdit.createdOn = news.createdOn;
                 $scope.newsEdit.lastEdit = news.lastEdit;
                 $scope.newsEdit.oldFiles = news.files;
+                $scope.newsEdit.someone = news.forWhom;
 
                 // By default all files will be saved
                 angular.forEach($scope.newsEdit.oldFiles, function(file){
@@ -23,9 +24,9 @@ myApp.controller('forAdminsEditController', ['$scope', '$routeParams', 'forAdmin
         //DELETE FILE
         var deleteFile = function(fileId) {
 
-            var file = new forAdminsFactory();
+            var file = new NewsFactory();
             file.$remove({do: 'deleteFile', id: fileId});
-            forAdminsFactory.get({do:'get', id:newsId}).$promise.then(
+            NewsFactory.get({do:'get', id:newsId}).$promise.then( // Test if this needed?
                 function(news){
                     $scope.newsEdit.oldFiles = news.files;
                 }
@@ -35,7 +36,7 @@ myApp.controller('forAdminsEditController', ['$scope', '$routeParams', 'forAdmin
         // UPDATE
         $scope.updateNews = function(){
 
-            var news = new forAdminsFactory();
+            var news = new NewsFactory();
             var id = $scope.newsEdit.id;
 
             news.title = $scope.newsEdit.title;
@@ -55,9 +56,19 @@ myApp.controller('forAdminsEditController', ['$scope', '$routeParams', 'forAdmin
             // Save new added files
             var newFiles = $scope.newsEdit.newFiles;
             if (newFiles != undefined)
-            fileUpload.uploadFileToUrl(newFiles, "/forAdmins/uploadFiles", newsId);
+            fileUpload.uploadFileToUrl(newFiles, "/news/uploadFiles", newsId);
 
-            window.location.href = '/#/forAdmins';
+            window.location.href = '/#/news/for/all';
+            //window.history.back();
+        };
+
+        // DELETE NEWS
+        $scope.deleteNews = function(id){
+            if (confirm('Удалить эту новость?')) {
+                var news = new NewsFactory();
+                news.$remove({do:'delete', id:id});
+                window.location.href = '/#/news/for/' + $scope.newsEdit.someone;
+            }
         };
     }
 ]);

@@ -1,0 +1,10 @@
+
+<form class="form" ng-submit="login()">
+    <input type='text' name='username' ng-model="credentials.username">
+    <input type='password' name='password' ng-model="credentials.password"/>
+    <button type="submit">Вход</button>
+</form>
+
+<div ng-show="error" class="login_error">
+    Скорее всего - неверный логин или пароль. Проверьте язык ввода и не нажат ли Caps Look.
+</div>

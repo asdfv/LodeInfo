@@ -1,12 +1,16 @@
 myApp.controller('newsAddController', ['$scope', '$routeParams', 'NewsFactory', 'fileUpload',
     function($scope, $routeParams, NewsFactory, fileUpload){
 
+        var someone = $routeParams.someone;
+        $scope.someone = someone;
+
         // SAVE news and UPLOAD file
         $scope.saveNews = function(){
 
             var news = new NewsFactory();
             news.title = $scope.news.title;
             news.text = $scope.news.text;
+            news.forWhom = someone;
 
             // save return promise of news
             var newsPromise = news.$save({do:'save', id:null});
@@ -19,9 +23,8 @@ myApp.controller('newsAddController', ['$scope', '$routeParams', 'NewsFactory', 
                     var files = $scope.news.files;
                     fileUpload.uploadFileToUrl(files, "/news/uploadFiles", newsId);
                 });
-                window.location.href = '/#/news/';
             }
-
+            window.location.href = '/#/news/for/' + someone;
         };
     }
 ]);

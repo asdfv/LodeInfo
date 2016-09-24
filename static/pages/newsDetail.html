@@ -7,13 +7,11 @@
 
 <div ng-repeat="file in newsDetail.files">
 
-    <img ng-src="/forAdmins/downloadFile/{{ file.id }}"
+    <img ng-src="data:{{ file.mimeType }};base64,{{ file.file }}"
          ng-show="file.mimeType.indexOf('image') + 1"
-         style="max-width: 800px;"
-    >
+         style="max-width: 800px;" >
     <br>
-    {{file.name}} - {{(file.size/1048576).toFixed(3)}} MБ -
-    <a href ng-click="download(file.id)">скачать</a>
+    {{file.name}} - {{(file.size/1048576).toFixed(3)}} MБ - <a href ng-click="download(file.id)">скачать</a>
     <hr>
 </div>
 
@@ -26,8 +24,8 @@
 </div>
 <br>
 
-<button class="pages_buttons_del" ng-click="deleteNews(newsDetail.id)">Удалить</button>
-<a class="pages_buttons" ng-href="/#/forAdmins/newsEdit/{{newsDetail.id}}">Изменить</a>
-<a href="/#/forAdmins" class="pages_buttons_del">Отменить</a>
+
+<a ng-show="authenticated" class="pages_buttons" ng-href="/#/news/newsEdit/{{newsDetail.id}}">Изменить</a>
+<a ng-href="/#/news/for/{{ newsDetail.someone }}" class="pages_buttons_del">Назад</a>
 
 <hr>

@@ -6,22 +6,21 @@
 
     <title>ЛОДЭ.info</title>
 
+    <!--Angular scripts-->
     <script src="/scripts/angular/angular.min.js"></script>
     <script src="/scripts/angular/angular-resource.min.js"></script>
     <script src="/scripts/angular/angular-route.min.js"></script>
     <script src="/scripts/app.js"></script>
 
+    <!--LogIn script-->
+    <script src="/scripts/controllers/loginController.js"></script>
+
+    <!--News scripts-->
     <script src="/scripts/controllers/newsController.js"></script>
     <script src="/scripts/controllers/newsAddController.js"></script>
     <script src="/scripts/controllers/newsDetailController.js"></script>
     <script src="/scripts/controllers/newsEditController.js"></script>
     <script src="/scripts/services/newsServices.js"></script>
-
-    <script src="/scripts/controllers/forAdminsController.js"></script>
-    <script src="/scripts/controllers/forAdminsAddController.js"></script>
-    <script src="/scripts/controllers/forAdminsDetailController.js"></script>
-    <script src="/scripts/controllers/forAdminsEditController.js"></script>
-    <script src="/scripts/services/forAdminsServices.js"></script>
 
     <script src="/scripts/directives/fileModel.js"></script>
 
@@ -32,7 +31,7 @@
 <body>
 
     <!-- Include header -->
-    <div ng-include="'header.html'"></div>
+    <div ng-controller="loginController" ng-include="'header.html'"></div>
 
     <!--MAIN VIEW BLOCK-->
     <div class="news" ng-view></div>

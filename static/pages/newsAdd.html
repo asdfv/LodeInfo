@@ -1,4 +1,6 @@
-
+<h1 ng-show="someone === 'all'" style="text-align: center">Добавить новость</h1>
+<h1 ng-show="someone === 'admin'" style="text-align: center">Добавить заметку для администраторов</h1>
+<br>
 <b>Заголовок (обязательно для заполнения)</b><br>
 <input type="text" size="100" ng-model="news.title"> <br><br>
 <b>Текст новости</b><br>
@@ -29,5 +31,5 @@
 <br>
 
 <button class="pages_buttons" ng-click="saveNews()">Сохранить</button>
-<a href="/#/news" class="pages_buttons_del">Отменить</a>
+<a ng-href="/#/news/for/{{ someone }}" class="pages_buttons_del">Отменить</a>
 
