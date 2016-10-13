@@ -1,0 +1,12 @@
+<form class="form_vip" ng-submit="searchVip(clients.spent, clients.payments)">
+    <b>Потраченная сумма (BYN) не менее: </b> <input type='text' ng-model="clients.spent">
+    <b>Количество оплат не менее: </b><input type='text' ng-model="clients.payments"/>
+    <button type="submit">Подобрать</button>
+    <br><br>
+    <img ng-show="loading" src="/assets/images/loading.gif">
+
+    <p ng-show="loading">Идет подбор - подождите... Примерное время ожидания - 20 секунд.</p>
+    <p ng-hide="loading">Найдено <b> {{ clients.vipCount || '0' }} </b> клиентов с подходящими параметрами.</p>
+</form>
+
+

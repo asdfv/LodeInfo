@@ -15,7 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("vasili").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("director").password("director321").roles("DIRECTOR");
     }
 
     @Override
@@ -36,7 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/pages/newsAdd.html",
                         "/news/save/**",
                         "/news/delete/**"
-                        ).hasRole("USER")
+                        ).access("hasRole('ROLE_DIRECTOR') or hasRole('ROLE_USER')")
+                .antMatchers(
+                        "/pages/vip.html",
+                        "/vip/**",
+                        "*/vip/**"
+                        ).hasRole("DIRECTOR")
                 .anyRequest().permitAll().and()
                 .logout()
                     .invalidateHttpSession(true)
@@ -45,5 +51,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/#/login").permitAll().and()
                 .csrf().disable();
     }
-
 }

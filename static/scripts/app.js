@@ -32,7 +32,16 @@ myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpP
         .when('/news/newsEdit/:newsId', {
             templateUrl: '/pages/newsEdit.html',
             controller: 'newsEditController'
-        });
+        })
+        .when('/sms', {
+            templateUrl: '/pages/sms.html',
+            controller: 'smsController'
+        })
+        .when('/vip', {
+            templateUrl: '/pages/vip.html',
+            controller: 'vipController'
+        })
+    ;
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 }]);

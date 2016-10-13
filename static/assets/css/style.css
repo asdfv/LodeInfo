@@ -140,36 +140,20 @@ body {
 
 /*---Table styles---*/
 
-table, td {
-	font: normal 100% 'century gothic', arial, sans-serif;
-	text-align: center;
-	padding: 0 5px 0 5px;
-	border-radius: 5px;
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.day_table, .number_table {
-		width: 800px;
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
-.day_table {
-	background-color: #cce0ff;
-}
-
-.number_table {
-	background-color: #ffffcc;
-}
-
-.filter_table, .filter_table td {
-	background-color: #b3ffb3;
-	padding: 5px 5px 5px 5px;
-}
-
-.day_btn {
-	background-color: #cce0ff;
-}
-
-.num_btn {
-	background-color: #ffffcc;
+tr:nth-child(even) {
+    background-color: #b3ffb3;
 }
 
 
@@ -195,6 +179,8 @@ table, td {
 
 /*Login form START*/
 .form {
+    font: 100% "century gothic",arial,sans-serif;
+    color: #FFFFFF;
     margin: 45px auto;
     background: darkgreen;
     max-width: 360px;
@@ -230,3 +216,39 @@ table, td {
 }
 /*Login form END*/
 
+/*VIP form START*/
+.form_vip {
+    margin: auto;
+    font: 100% "century gothic",arial,sans-serif;
+    color: black;
+    max-width: 360px;
+    padding: 45px;
+    text-align: center;
+    border-radius: 5px;
+}
+.form_vip input {
+    font: 100% "century gothic",arial,sans-serif;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.form_vip button {
+    font: 100% "century gothic",arial,sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.form_vip button:hover,.form button:active,.form button:focus {
+    background: #43A047;
+}
+/*VIP form END*/

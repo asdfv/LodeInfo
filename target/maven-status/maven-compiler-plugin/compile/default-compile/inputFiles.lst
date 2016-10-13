@@ -1,6 +1,10 @@
-E:\Programming\lodeinfo\src\main\java\lodeinfo\model\NewsEntity.java
-E:\Programming\lodeinfo\src\main\java\lodeinfo\repository\NewsRepository.java
-E:\Programming\lodeinfo\src\main\java\lodeinfo\controller\NewsController.java
-E:\Programming\lodeinfo\src\main\java\lodeinfo\config\StartApp.java
-E:\Programming\lodeinfo\src\main\java\lodeinfo\model\NewsImagesEntity.java
-E:\Programming\lodeinfo\src\main\java\lodeinfo\controller\TestController.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\config\SecurityConfig.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\controller\SecurityController.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\repository\FileRepository.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\model\FileEntity.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\controller\FileController.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\config\SpringSecurityInitializer.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\config\StartApp.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\repository\NewsRepository.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\controller\NewsController.java
+E:\Cloud\Mail.Ru\Programming\LodeInfo\src\main\java\lodeinfo\model\NewsEntity.java

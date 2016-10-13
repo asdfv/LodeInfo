@@ -10,15 +10,17 @@ myApp.controller('loginController', ['$rootScope', '$scope', '$http', '$location
 
             $http.get('/security/user', {headers : headers}).success(function(data) {
                 if (data.name) {
-                    $scope.currentUser = data.name;
+                    $rootScope.currentUser = data.name;
                     console.log(data.name + ' has logged');
                     $rootScope.authenticated = true;
                 } else {
                     $rootScope.authenticated = false;
+                    $rootScope.currentUser = 'anonymous';
                 }
                 callback && callback();
             }).error(function() {
                 $rootScope.authenticated = false;
+                $rootScope.currentUser = 'anonymous';
                 callback && callback();
             });
 
