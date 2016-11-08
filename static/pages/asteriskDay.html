@@ -1,0 +1,62 @@
+<h1>Почасовая статистика</h1>
+
+<form class="form_stat" ng-submit="showDayStat(dayStat.day, dayStat.startHour, dayStat.endHour)">
+
+    <md-input-container>
+        <label>Выбрать дату</label>
+        <md-datepicker
+                md-open-on-focus=""
+                md-hide-icons="calendar"
+                ng-model="dayStat.day">
+        </md-datepicker>
+    </md-input-container>
+
+    <br>
+
+    <md-input-container>
+        <label>Время с</label>
+        <md-select ng-model="dayStat.startHour">
+            <md-option ng-repeat="hour in dayStat.hours" ng-value="hour">
+                {{ hour }}
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+    <br>
+
+    <md-input-container>
+        <label>до</label>
+        <md-select ng-model="dayStat.endHour">
+            <md-option ng-repeat="hour in dayStat.hours" ng-value="hour">
+                {{ hour }}
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+    <br>
+
+    <md-button class="stat_button" type="submit" class="md-raised">Показать</md-button>
+
+</form>
+
+<br>
+
+<table class="common_table" ng-show="dayStat.stat_list.length > 0">
+    <tr>
+        <th>Час</th>
+        <th>Пропущенные</th>
+        <th>Входящие</th>
+        <th>Исходящие</th>
+        <th>Средняя продолжительность <br> разговора, с</th>
+    </tr>
+    <tr ng-repeat="(key, stat) in dayStat.stat_list | orderBy: 'curHour'">
+        <td> {{ stat.curHour }} </td>
+        <td> {{ stat.missedCount }} </td>
+        <td> {{ stat.incomingCount }} </td>
+        <td> {{ stat.outgoingCount }} </td>
+        <td> {{ stat.callDuration }} </td>
+    </tr>
+
+</table>
+
+<p ng-show="dayStat.stat_list.length > 0">Полученную таблицу можно выделить и скопировать, например, в MS Excel</p>
