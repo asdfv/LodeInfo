@@ -1,26 +1,28 @@
 <h1>СМС-рассылка</h1>
 
-<table>
-    <tr>
-        <th>N</th>
-        <th>ФИО</th>
-        <th>Номер</th>
-        <!--<th>Текст сообщения</th>-->
-        <th>Время</th>
-        <th>Врач</th>
-        <th>Подразделение</th>
-        <th>Отправить?</th>
-    </tr>
-    <tr ng-repeat="sms in sms_list | orderBy: 'customersFio'">
-        <td> {{ $index + 1 }} </td>
-        <td> {{ sms.customersFio }} </td>
-        <td> {{ sms.phoneNumber }} </td>
-        <td> {{ sms.cwdWorkersWorkTimeBegin | limitTo: 5 }} </td>
-        <td> {{ sms.workerFio }} </td>
-        <td> {{ sms.objectName }} </td>
-        <!--<td> {{ sms.smsText }} </td>-->
-        <td style="cursor: pointer" ng-click="sms.forSend = !sms.forSend"> <span ng-hide="sms.forSend"> НЕТ </span> </td>
-    </tr>
-</table>
+<h2>In developing...</h2>
 
-<button ng-click="sendJson()">Send</button>
+<!--<table class="common_table">-->
+    <!--<tr>-->
+        <!--<th>N</th>-->
+        <!--<th>ФИО</th>-->
+        <!--<th>Номер</th>-->
+        <!--&lt;!&ndash;<th>Текст сообщения</th>&ndash;&gt;-->
+        <!--<th>Время</th>-->
+        <!--<th>Врач</th>-->
+        <!--<th>Подразделение</th>-->
+        <!--<th>Отправить?</th>-->
+    <!--</tr>-->
+    <!--<tr ng-repeat="sms in sms_list | orderBy: 'customersFio'">-->
+        <!--<td> {{ $index + 1 }} </td>-->
+        <!--<td> {{ sms.customersFio }} </td>-->
+        <!--<td> {{ sms.phoneNumber }} </td>-->
+        <!--<td> {{ sms.cwdWorkersWorkTimeBegin | limitTo: 5 }} </td>-->
+        <!--<td> {{ sms.workerFio }} </td>-->
+        <!--<td> {{ sms.objectName }} </td>-->
+        <!--&lt;!&ndash;<td> {{ sms.smsText }} </td>&ndash;&gt;-->
+        <!--<td style="cursor: pointer" ng-click="sms.forSend = !sms.forSend"> <span ng-hide="sms.forSend"> НЕТ </span> </td>-->
+    <!--</tr>-->
+<!--</table>-->
+
+<!--<button ng-click="sendJson()">Send</button>-->
