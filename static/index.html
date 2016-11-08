@@ -10,6 +10,18 @@
     <script src="/scripts/angular/angular.min.js"></script>
     <script src="/scripts/angular/angular-resource.min.js"></script>
     <script src="/scripts/angular/angular-route.min.js"></script>
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="/scripts/angular/angular-animate.min.js"></script>
+    <script src="/scripts/angular/angular-aria.min.js"></script>
+    <script src="/scripts/angular/angular-messages.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/angular-material.min.css">
+
+    <!-- Angular Material Library -->
+    <script src="/scripts/angular/angular-material.min.js"></script>
+
+    <!--Main app script-->
     <script src="/scripts/app.js"></script>
 
     <!--LogIn script-->
@@ -30,17 +42,35 @@
     <!--VIP-->
     <script src="/scripts/controllers/vipController.js"></script>
 
+    <!--Asterisk-->
+    <script src="/scripts/controllers/asteriskMonthController.js"></script>
+    <script src="/scripts/controllers/asteriskDayController.js"></script>
+
+    <!--Include CSS-->
+    <!--<link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
 <body>
 
-    <!-- Include header -->
-    <div ng-controller="loginController" ng-include="'header.html'"></div>
+<!-- Include header -->
+<div ng-controller="loginController" ng-include="'header.html'"></div>
 
-    <!--MAIN VIEW BLOCK-->
-    <div class="news" ng-view></div>
+<!--MAIN VIEW BLOCK-->
+<div class="news" ng-view></div>
+
+<!--<div layout="row">-->
+
+    <!--<div flex="0">-->
+        <!--&lt;!&ndash; Include asterisk menu &ndash;&gt;-->
+        <!--<div ng-include="'/pages/asteriskMenu.html'"></div>-->
+    <!--</div>-->
+
+    <!--<div flex="100">-->
+
+    <!--</div>-->
+<!--</div>-->
 
     <!-- Include footer -->
     <div ng-include="'footer.html'"></div>

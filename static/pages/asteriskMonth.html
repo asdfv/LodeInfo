@@ -1,0 +1,58 @@
+<h1>Просмотр месячной статистики</h1>
+
+<form class="form_stat" ng-submit="showMonthStat(monthStat.year, monthStat.extendedMonth)">
+
+    <md-input-container>
+        <label>Год</label>
+        <md-select ng-model="monthStat.year">
+            <md-option ng-repeat="year in monthStat.years" ng-value="year.year">
+                {{ year.year }}
+            </md-option>
+        </md-select>
+    </md-input-container>
+    <br>
+    <md-input-container>
+        <label>Месяц</label>
+        <md-select ng-model="monthStat.extendedMonth">
+            <md-option ng-repeat="month in monthStat.months" ng-value="month.monthName">
+                {{ month.monthName }}
+            </md-option>
+        </md-select>
+    </md-input-container>
+    <br>
+
+    <md-button class="stat_button" type="submit" class="md-raised">Показать</md-button>
+</form>
+
+<br>
+
+<table class="common_table" ng-show="monthStat.stat_list.length > 0">
+    <tr>
+        <th>День</th>
+        <th>Пропущенные</th>
+        <th>Входящие</th>
+        <th>Отвеченные</th>
+        <th>Среднее время <br> ответа, с</th>
+    </tr>
+    <tr ng-repeat="(key, stat) in monthStat.stat_list | orderBy: 'curDay'">
+        <td> {{ stat.curDay }} </td>
+        <td> {{ stat.missedCount }} </td>
+        <td> {{ stat.incomingCount }} </td>
+        <td> {{ stat.answeredCount }} </td>
+        <td> {{ stat.avgTime }} </td>
+    </tr>
+
+</table>
+
+<p ng-show="monthStat.stat_list.length > 0">Полученную таблицу можно выделить и скопировать, например, в MS Excel</p>
+
+<div ng-show="monthStat.stat_list.length > 0">
+
+    <h2>Пояснения по пунктам статистики</h2>
+
+    <p><b>Входящий вызов</b>. Вызов считается входящим, если абонент прослушал обязательное приветствие (около 10 сек) и попал в очередь звонков колцентра.</p>
+    <p><b>Отвеченный вызовов</b> – это вызов, который попал в очередь звонков колцентра, и оператор его принял.</p>
+    <p><b>Пропущенным вызовом</b> считается вызов, который поступил в очередь звонков колцентра, прождал в очереди более 15 секунд, не был обработан оператором и завершил вызов (положил трубку). Временной интервал 15 секунд взят для того, чтобы исключить из числа пропущенных ложные звонки. Например, абонент прослушал обязательное приветствие, понял, что ошибся номером и положил трубку. Невелика вероятность того, что абонент, который не подождал ответа даже 15 секунд, действительно хотел дозвониться.</p>
+    <p><b>Среднее время ожидания</b> – это средний интервал времени в секундах, который ожидает абонент, перед тем, как ответит оператор.</p>
+
+</div>

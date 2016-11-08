@@ -1,12 +1,38 @@
-<form class="form_vip" ng-submit="searchVip(clients.spent, clients.payments)">
+<h1>Подбор постоянных клиентов</h1>
+
+<form class="form_vip" ng-submit="searchVipList(clients.spent, clients.payments)">
     <b>Потраченная сумма (BYN) не менее: </b> <input type='text' ng-model="clients.spent">
     <b>Количество оплат не менее: </b><input type='text' ng-model="clients.payments"/>
     <button type="submit">Подобрать</button>
     <br><br>
     <img ng-show="loading" src="/assets/images/loading.gif">
 
-    <p ng-show="loading">Идет подбор - подождите... Примерное время ожидания - 20 секунд.</p>
-    <p ng-hide="loading">Найдено <b> {{ clients.vipCount || '0' }} </b> клиентов с подходящими параметрами.</p>
+    <p ng-show="loading">
+        Идет подбор - подождите... Примерное время ожидания - 30 секунд.
+
+    <p ng-hide="loading">
+        Найдено <b> {{ vip_list.length || '0' }} </b> клиентов с подходящими параметрами.
+    </p>
+        Отображаются не более 200 клиентов, потративших наибольшие суммы денег.
+    </p>
+
 </form>
+
+<table class="common_table">
+    <tr>
+        <th>N</th>
+        <th>Фамилия и имя</th>
+        <th>Потрачено денег, BYN</th>
+        <th>Количество оплат</th>
+    </tr>
+    <tr ng-repeat="vip in vip_list | orderBy: '-paySum' | limitTo: 200">
+        <td> {{ $index + 1 }} </td>
+        <td> {{ vip.customersFirstname + " " + vip.customersLastname }} </td>
+        <td> {{ vip.paySum | currency : " " : 0 }} </td>
+        <td> {{ vip.payCount }} </td>
+    </tr>
+</table>
+
+
 
 

@@ -6,8 +6,8 @@ public class VipEntity {
     private Long customersId;
     private String customersLastname;
     private String customersFirstname;
-    private String paySum;
-    private String payCount;
+    private int paySum;
+    private int payCount;
 
     public VipEntity() {
     }
@@ -36,19 +36,19 @@ public class VipEntity {
         this.customersFirstname = customersFirstname;
     }
 
-    public String getPaySum() {
+    public int getPaySum() {
         return paySum;
     }
 
-    public void setPaySum(String paySum) {
+    public void setPaySum(int paySum) {
         this.paySum = paySum;
     }
 
-    public String getPayCount() {
+    public int getPayCount() {
         return payCount;
     }
 
-    public void setPayCount(String payCount) {
+    public void setPayCount(int payCount) {
         this.payCount = payCount;
     }
 }

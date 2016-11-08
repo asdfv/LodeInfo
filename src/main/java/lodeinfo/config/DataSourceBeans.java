@@ -27,9 +27,22 @@ public class DataSourceBeans {
         return DataSourceBuilder.create().build();
     }
 
+    @Bean(name = "asteriskDs")
+    @ConfigurationProperties(prefix = "asterisk.datasource")
+    public DataSource AsteriskDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
     @Bean(name = "jdbcMegamag")
+    @Primary
     @Autowired
-    public JdbcTemplate jdbcTemplate(@Qualifier("megamagDs") DataSource megamagDs) {
+    public JdbcTemplate jdbcTemplateMegamag(@Qualifier("megamagDs") DataSource megamagDs) {
         return new JdbcTemplate(megamagDs);
+    }
+
+    @Bean(name = "jdbcAsterisk")
+    @Autowired
+    public JdbcTemplate jdbcTemplateAsterisk(@Qualifier("asteriskDs") DataSource asteriskDs) {
+        return new JdbcTemplate(asteriskDs);
     }
 }

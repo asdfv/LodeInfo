@@ -2,6 +2,7 @@ package lodeinfo.model;
 
 public class SMSEntity {
 
+    private Long customersId;
     private String customersFio;
     private String phoneNumber;
     private String cwdWorkersWorkDate;
@@ -20,6 +21,13 @@ public class SMSEntity {
         return "Ув. " + customersFio + " приглашаем Вас " + cwdWorkersWorkDate + " в " + cwdWorkersWorkTimeBegin + " на " + objectName + " к " + specialName;
     }
 
+    public Long getCustomersId() {
+        return customersId;
+    }
+
+    public void setCustomersId(Long customersId) {
+        this.customersId = customersId;
+    }
 
     public String getSmsText() {
         return smsText;

@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("vasili").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("vasili").roles("ADMIN", "USER", "DIRECTOR");
         auth.inMemoryAuthentication().withUser("director").password("director321").roles("DIRECTOR");
     }
 
@@ -29,6 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+//        http.httpBasic()
+//                .and()
+//                .authorizeRequests()
+//                .anyRequest().permitAll().and()
+//                .logout()
+//                .invalidateHttpSession(true)
+//                .deleteCookies("JSESSIONID")
+//                .clearAuthentication(true)
+//                .logoutSuccessUrl("/#/login").permitAll().and()
+//                .csrf().disable();
+
                 http.httpBasic()
                 .and()
                 .authorizeRequests()
@@ -36,13 +47,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/pages/newsEdit.html",
                         "/pages/newsAdd.html",
                         "/news/save/**",
-                        "/news/delete/**"
-                        ).access("hasRole('ROLE_DIRECTOR') or hasRole('ROLE_USER')")
-                .antMatchers(
+                        "/news/delete/**",
                         "/pages/vip.html",
                         "/vip/**",
-                        "*/vip/**"
-                        ).hasRole("DIRECTOR")
+
+                        "/pages/asteriskMonth.html",
+                        "/pages/asteriskDay.html",
+                        "/asterisk/**",
+
+                        "/pages/vip.html",
+                        "/vip/**",
+
+                        "/pages/sms.html",
+                        "/sms"
+                        ).hasAnyRole("DIRECTOR", "ADMIN", "USER")
                 .anyRequest().permitAll().and()
                 .logout()
                     .invalidateHttpSession(true)

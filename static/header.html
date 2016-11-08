@@ -1,4 +1,6 @@
 <div class="header">
+
+    <!--Right menu START-->
     <div>
         <ul class="menu">
             <li ng-hide="authenticated">
@@ -9,6 +11,7 @@
             </li>
         </ul>
     </div>
+    <!--Right menu END-->
 
 	<div class="logo">
 		<div class="logo_image">
@@ -20,17 +23,61 @@
 		</div>
 	</div>
 
-    <div style="vertical-align: middle; float: left; display: inline-block">
-        <ul class="menu">
+    <!--Left menu START-->
+    <div class="top_left_menu" ng-show="authenticated">
+
+        <md-list-item class="top_left_menu_item">
+            <p>Call-центр</p>
+            <md-menu md-offset="20px" class="one_pix_sixe">
+                <md-button>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button md-no-ink="true" ng-href="/#/asterisk/day">
+                            Дневная статистика
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-href="/#/asterisk/month">
+                            Месячная статистика
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-list-item>
+
+        <md-list-item class="top_left_menu_item">
+            <p>Разное</p>
+            <md-menu md-offset="20px" class="one_pix_sixe">
+                <md-button>
+                </md-button>
+                <md-menu-content width="3">
+                    <md-menu-item>
+                        <md-button ng-href="/#/vip">
+                            Поиск VIP
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-href="/#/sms">
+                            SMS-рассылка
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-list-item>
+        <!--<ul class="menu">-->
             <!--<li class="selected"><a href="/#/sms">СМС-рассылка</a></li>-->
-            <li ng-show="(currentUser == 'director') && authenticated" class="selected"><a href="/#/vip">Подбор постоянных клиентов</a></li>
+            <!--<li ng-show="(currentUser == 'director') && authenticated" class="selected"><a href="/#/vip">Подбор VIP</a></li>-->
+        <!--</ul>-->
+    </div>
+    <div class="top_right_menu">
+     	<ul class="menu">
+            <li class="selected"><a href="/#/news/for/all">Новости</a></li>
+            <li class="selected"><a href="/#/news/for/admin">Администраторам</a></li>
+            <li><a href="/#/TimeTableManual">Инструкция Time Table</a></li>
+            <li><a href="/#/phoneBook">Телефоны</a></li>
         </ul>
     </div>
-    <div style="vertical-align: middle; float: right; display: inline-block">
-     	<ul class="menu">
-      	<li class="selected"><a href="/#/news/for/all">Новости</a></li>
-      	<li class="selected"><a href="/#/news/for/admin">Администраторам</a></li>
-        <li><a href="/#/TimeTableManual">Инструкция Time Table</a></li>
-        </ul>    
-    </div>
+    <!--Left menu END-->
+
 </div>

@@ -1,6 +1,8 @@
-var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute']);
+var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute', 'ngMaterial']);
 
-myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
+myApp.config(['$routeProvider', '$httpProvider',
+
+    function($routeProvider, $httpProvider){
 
     $routeProvider
 
@@ -20,6 +22,9 @@ myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpP
         })
         .when('/TimeTableManual', {
             templateUrl: '/pages/staticPages/TimeTableManual.html'
+        })
+        .when('/phoneBook', {
+            templateUrl: '/pages/staticPages/phoneBook.html'
         })
         .when('/news/newsAdd/:someone', {
             templateUrl: '/pages/newsAdd.html',
@@ -41,9 +46,18 @@ myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpP
             templateUrl: '/pages/vip.html',
             controller: 'vipController'
         })
+        .when('/asterisk/month', {
+            templateUrl: '/pages/asteriskMonth.html',
+            controller: 'asteriskMonthController'
+        })
+        .when('/asterisk/day', {
+            templateUrl: '/pages/asteriskDay.html',
+            controller: 'asteriskDayController'
+        })
     ;
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
 }]);
 
 
