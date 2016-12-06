@@ -2,7 +2,7 @@
 
 <h1>{{newsDetail.title}}</h1> <br>
 
-<div class="full_text">{{newsDetail.text}}...  </div>
+<div class="full_text" ng-bind-html="newsDetail.text"></div>
 <br>
 
 <p ng-show="newsDetail.files.length > 0">Прикрепленные файлы:</p>

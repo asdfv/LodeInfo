@@ -1,5 +1,6 @@
 package lodeinfo.controller;
 
+import lodeinfo.model.CdrEntity;
 import lodeinfo.repository.AsteriskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -55,5 +58,27 @@ public class AsteriskController {
         hourStats.put("callDuration", asteriskRepository.callDurationForHour(day, hour));
 
         return hourStats;
+    }
+
+    @RequestMapping(
+            value = "/cdr/day",
+            method = RequestMethod.GET
+    ) public List<CdrEntity> getCdrByCalldate (@RequestParam String dayToSearch) {
+
+        long curTime = System.currentTimeMillis();
+        String curDate = new SimpleDateFormat("yyyy-MM-dd").format(curTime);
+
+        if (dayToSearch == "") {
+            return asteriskRepository.findCdrByCalldate(curDate);
+        } else
+            return asteriskRepository.findCdrByCalldate(dayToSearch);
+    }
+
+    @RequestMapping(
+            value = "/cdr/number",
+            method = RequestMethod.GET
+    ) public List<CdrEntity> getCdrEntityBySrcAndDst (@RequestParam String numberToSearch) {
+
+        return asteriskRepository.findCdrEntityBySrcAndDst(numberToSearch);
     }
 }

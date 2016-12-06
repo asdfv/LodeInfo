@@ -8,7 +8,7 @@
     <img ng-show="loading" src="/assets/images/loading.gif">
 
     <p ng-show="loading">
-        Идет подбор - подождите... Примерное время ожидания - 30 секунд.
+        Идет подбор - подождите... Примерное время ожидания - 10 секунд.
 
     <p ng-hide="loading">
         Найдено <b> {{ vip_list.length || '0' }} </b> клиентов с подходящими параметрами.
@@ -18,7 +18,7 @@
 
 </form>
 
-<table class="common_table">
+<table class="common_table" ng-show="vip_list.length > 0">
     <tr>
         <th>N</th>
         <th>Фамилия и имя</th>

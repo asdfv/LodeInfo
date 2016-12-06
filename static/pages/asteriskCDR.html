@@ -1,0 +1,144 @@
+<h1>Просмотр звонков</h1>
+
+<br>
+
+<!--Filter table-->
+<table class="filter_table">
+    <tr>
+        <th ng-class="{current_cell: showMainTable}">Поиск по дню</th>
+        <th ng-class="{current_cell: !showMainTable}">Поиск по номеру</th>
+    </tr>
+    <tr>
+        <!--Day filter-->
+        <td>
+            <md-input-container>
+                <label>Выбрать день</label>
+                <md-datepicker
+                        md-open-on-focus=""
+                        md-hide-icons="calendar"
+                        ng-model="selectedDate">
+                </md-datepicker>
+            </md-input-container>
+        </td> <!--Day filter end-->
+        <!--Number filter-->
+        <td>
+            <md-input-container>
+                <label>Номер</label>
+                <input ng-model="number">
+            </md-input-container>
+        </td> <!--Number filter-->
+    </tr>
+    <tr>
+        <td>
+            <md-button ng-hide="dayLoading" class="stat_button" ng-click="loadList()" class="md-raised">Показать</md-button><br>
+            <md-progress-circular ng-show="dayLoading" md-mode="indeterminate"></md-progress-circular>
+        </td>
+        <td>
+            <md-button ng-hide="numberLoading" class="stat_button" ng-click="numberSearch()" class="md-raised">Найти</md-button><br>
+            <md-progress-circular ng-show="numberLoading" md-mode="indeterminate"></md-progress-circular>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ cdr_list.length }}
+        </td>
+        <td>
+            {{ number_list.length }}
+        </td>
+    </tr>
+</table>
+
+<!-- Main table for days stats -->
+<table class="common_table" ng-show="showMainTable">
+
+    <caption><h3>Для выбранного дня - {{ selectedDate | date : 'fullDate' : '+03' }}</h3></caption>
+    <tr>
+        <th>
+            <md-checkbox class="green" ng-model="timeFilterEnabled" ng-init="timeFilterEnabled = true" aria-label="Checkbox 1">
+                С 8 до 21
+            </md-checkbox>
+        </th>
+        <th>
+            Поиск: <br> <input type="text" ng-model="quickSearchNumber">
+        </th>
+        <th>
+            <md-checkbox class="green" ng-model="incomingFilterEnabled" aria-label="Checkbox 1">
+                Входящие
+            </md-checkbox>
+            <br>
+            <md-checkbox class="green" ng-model="outgoingFilterEnabled" aria-label="Checkbox 1">
+                Исходящие
+            </md-checkbox>
+        </th>
+        <th colspan="3">
+            Найдено: {{ filtered.length }}
+        </th>
+    </tr>
+
+    <tr>
+        <th>Время</th> <th>Источник</th> <th>Назначение</th> <th>Длит</th> <th>Прослушать запись</th> <th>Скачать</th>
+    </tr>
+
+    <tr ng-repeat="record in cdr_list |
+    filter : quickSearchNumber |
+    filter : timeFilter |
+    filter : incomingFilter |
+    filter : outgoingFilter as filtered ">
+        <td>{{record.calldate | limitTo: 16}}</td> <td>{{record.src}}</td> <td>{{record.dst}}</td> <td>{{record.billsec}}</td>
+
+        <td>
+            <audio ng-hide="!isIncoming(record) || record.duration < 20" controls preload="none" type="audio/wav">
+                <source ng-src="{{ getAudioPath(record) | trusted }}" type="audio/wav">
+                Ваш браузер не пожжерживает тег audio!
+            </audio>
+        </td>
+        <td>
+            <a ng-href="{{ getAudioPathIncomingFtp(record) }}" ng-show="isIncoming(record)">Скачать</a>
+            <a ng-href="{{ getAudioPathOutgoingFtp(record) }}" ng-hide="isIncoming(record)">Скачать</a>
+        </td>
+    </tr>
+
+</table>
+
+<!-- Table for search number -->
+<table class="common_table" ng-show="!showMainTable">
+
+    <caption><h3>Поиск записей по номеру &#171{{ number }}&#187 (выводятся не более 500 строк) </h3></caption>
+
+    <tr>
+        <th>
+            <md-checkbox class="green" ng-model="incomingFilterEnabled" aria-label="Checkbox 1">
+                Входящие
+            </md-checkbox>
+            <br>
+            <md-checkbox class="green" ng-model="outgoingFilterEnabled" aria-label="Checkbox 1">
+                Исходящие
+            </md-checkbox>
+        </th>
+        <th>
+
+        </th>
+        <th colspan="3">
+            Найдено: {{ filtered.length }}
+        </th>
+    </tr>
+
+    <tr align="center">
+        <th>Время</th> <th>Источник</th> <th>Назначение</th> <th>Длит</th> <th>Audio</th>
+    </tr>
+
+    <tr align="center" ng-repeat="record in number_list|
+    filter : incomingFilter |
+    filter : outgoingFilter as filtered ">
+        <td>{{record.calldate | limitTo: 16}}</td> <td>{{record.src}}</td> <td>{{record.dst}}</td> <td>{{record.billsec}}</td>
+
+            <td>
+                <audio controls preload="none" ng-hide="!isIncoming(record) || record.duration < 20">
+                    <Source ng-src="{{getAudioPath(record) | trusted }}"  type="audio/wav">
+                    Ваш браузер не пожжерживает тег audio!
+                </audio>
+            </td>
+    </tr>
+
+</table>
+

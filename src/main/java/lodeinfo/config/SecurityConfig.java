@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
+        auth.inMemoryAuthentication().withUser("user").password("userlode321").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("vasili").roles("ADMIN", "USER", "DIRECTOR");
         auth.inMemoryAuthentication().withUser("director").password("director321").roles("DIRECTOR");
     }
@@ -29,16 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.httpBasic()
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest().permitAll().and()
-//                .logout()
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID")
-//                .clearAuthentication(true)
-//                .logoutSuccessUrl("/#/login").permitAll().and()
-//                .csrf().disable();
+        http.httpBasic()
+                .and()
+                .authorizeRequests()
+                .anyRequest().permitAll().and()
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/#/login").permitAll().and()
+                .csrf().disable();
 
                 http.httpBasic()
                 .and()
@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                         "/pages/asteriskMonth.html",
                         "/pages/asteriskDay.html",
+                        "/pages/asteriskCDR.html",
                         "/asterisk/**",
 
                         "/pages/vip.html",

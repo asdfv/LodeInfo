@@ -1,5 +1,14 @@
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    color: white;
+}
+
 h1, h2 {
     text-align: center;
+
 }
 
 input, textarea {
@@ -9,7 +18,6 @@ input, textarea {
 
 body, html {
 	background-color: #e5ffe5;
-
 }
 
 .short_text {
@@ -56,6 +64,7 @@ body, html {
 
 .pages_buttons_del:hover {
     background-color: #ffb3b3;
+    text-decoration: none;
 }
 
 .current_button {
@@ -64,6 +73,7 @@ body, html {
 }
 .pages_buttons:hover {
 	background-color: #83c985;
+    text-decoration: none;
 }
 
 .content img {
@@ -73,10 +83,11 @@ body, html {
 .header {
 	background-color: darkgreen;
 	height: 100px;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	padding: 10px 0 30px 60px;
 	border-radius: 5px;
     min-width: 900px;
+    min-height: 135px;
 }
 
 .logo {
@@ -148,16 +159,43 @@ body, html {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     margin: auto;
+    align: center;
 }
 
 .common_table td, th {
     border: 1px solid #dddddd;
     padding: 3px;
     text-align: center;
+    max-width: 250px;
+}
+
+.common_table input {
+    max-width: 110px;
 }
 
 .common_table tr:nth-child(even) {
     background-color: #b3ffb3;
+}
+
+.common_table tr:hover td {
+    background: darkgreen;
+    color: white;
+}
+
+.filter_table {
+    border-collapse: collapse;
+    font-family: arial, sans-serif;
+    margin: auto;
+}
+.filter_table td, .filter_table th {
+    border: none;
+    padding: 0 50px 0 50px;
+    text-align: center;
+}
+
+.current_cell {
+    background-color: darkgreen;
+    color: white;
 }
 
 .footer {
@@ -183,7 +221,7 @@ body, html {
 /*Login form START*/
 .form_login {
     font: 100% "century gothic",arial,sans-serif;
-    color: #FFFFFF;
+    color: darkgreen;
     margin: 45px auto;
     background: darkgreen;
     max-width: 360px;
@@ -317,7 +355,12 @@ body, html {
     max-height: 1px;
 }
 
-/*Redefine ngMaterial css*/
+.form-control {
+    width: 100%;
+    height: 100%;
+}
+
+/*Redefine ngMaterial css and bootstrap*/
 .md-datepicker-input-container {
     width: 110%;
     border-bottom-style: none;
@@ -348,4 +391,22 @@ md-input-container {
     min-width: 80px;
 }
 
+md-checkbox.md-checked.green .md-icon {
+    background-color: darkgreen;
+}
 
+md-progress-circular.md-default-theme path, md-progress-circular path {
+    stroke: darkgreen;
+}
+
+md-checkbox {
+    margin: 5px;
+}
+
+md-progress-circular {
+    margin: auto;
+}
+
+audio {
+    max-width: inherit;
+}

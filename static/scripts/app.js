@@ -1,8 +1,8 @@
-var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute', 'ngMaterial']);
+var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute', 'ngMaterial', 'ngSanitize', 'textAngular']);
 
-myApp.config(['$routeProvider', '$httpProvider',
+myApp.config(['$routeProvider', '$httpProvider', '$mdDateLocaleProvider',
 
-    function($routeProvider, $httpProvider){
+    function($routeProvider, $httpProvider, $mdDateLocaleProvider){
 
     $routeProvider
 
@@ -54,10 +54,29 @@ myApp.config(['$routeProvider', '$httpProvider',
             templateUrl: '/pages/asteriskDay.html',
             controller: 'asteriskDayController'
         })
+        .when('/asterisk/cdr', {
+            templateUrl: '/pages/asteriskCDR.html',
+            controller: 'asteriskCDRController'
+        })
     ;
 
     $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
+
+    $mdDateLocaleProvider.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+    $mdDateLocaleProvider.shortMonths = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+    $mdDateLocaleProvider.days = ['Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Птяница', 'Суббота'];
+    $mdDateLocaleProvider.shortDays = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    $mdDateLocaleProvider.firstRenderableDate = new Date(2011, 11, 1);
+    $mdDateLocaleProvider.lastRenderableDate = new Date();
+
+}]);
+
+myApp.filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
 }]);
 
 

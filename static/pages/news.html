@@ -15,7 +15,7 @@
 
         <h1>{{news.title}}</h1> <br>
 
-        <div class="short_text">{{news.text}}</div><br>
+        <div class="short_text" ng-bind-html="news.text"></div><br>
         <a ng-href="/#/news/newsDetail/{{news.id}}">Подробнее...</a>
 
         <br>
