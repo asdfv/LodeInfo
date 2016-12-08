@@ -1,4 +1,4 @@
-var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute', 'ngMaterial', 'ngSanitize', 'textAngular']);
+var myApp = angular.module('lodeinfo', ['ngResource', 'ngRoute', 'ngMaterial', 'ngSanitize'/*, 'textAngular'*/]);
 
 myApp.config(['$routeProvider', '$httpProvider', '$mdDateLocaleProvider',
 
