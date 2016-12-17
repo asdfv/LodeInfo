@@ -29,45 +29,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.httpBasic()
-//                .and()
-//                .authorizeRequests()
-//                .anyRequest().permitAll().and()
-//                .logout()
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID")
-//                .clearAuthentication(true)
-//                .logoutSuccessUrl("/#/login").permitAll().and()
-//                .csrf().disable();
-
-                http.httpBasic()
+        http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(
-                        "/pages/newsEdit.html",
-                        "/pages/newsAdd.html",
-                        "/news/save/**",
-                        "/news/delete/**",
-                        "/pages/vip.html",
-                        "/vip/**",
-
-                        "/pages/asteriskMonth.html",
-                        "/pages/asteriskDay.html",
-                        "/pages/asteriskCDR.html",
-                        "/asterisk/**",
-
-                        "/pages/vip.html",
-                        "/vip/**",
-
-                        "/pages/sms.html",
-                        "/sms"
-                        ).hasAnyRole("DIRECTOR", "ADMIN", "USER")
                 .anyRequest().permitAll().and()
                 .logout()
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID")
-                    .clearAuthentication(true)
-                    .logoutSuccessUrl("/#/login").permitAll().and()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .clearAuthentication(true)
+                .logoutSuccessUrl("/#/login").permitAll().and()
                 .csrf().disable();
+
+//                http.httpBasic()
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers(
+//                        "/pages/newsEdit.html",
+//                        "/pages/newsAdd.html",
+//                        "/news/save/**",
+//                        "/news/delete/**",
+//                        "/pages/vip.html",
+//                        "/vip/**",
+//
+//                        "/pages/asteriskMonth.html",
+//                        "/pages/asteriskDay.html",
+//                        "/pages/asteriskCDR.html",
+//                        "/asterisk/**",
+//
+//                        "/pages/vip.html",
+//                        "/vip/**",
+//
+//                        "/pages/sms.html",
+//                        "/sms"
+//                        ).hasAnyRole("DIRECTOR", "ADMIN", "USER")
+//                .anyRequest().permitAll().and()
+//                .logout()
+//                    .invalidateHttpSession(true)
+//                    .deleteCookies("JSESSIONID")
+//                    .clearAuthentication(true)
+//                    .logoutSuccessUrl("/#/login").permitAll().and()
+//                .csrf().disable();
     }
 }
