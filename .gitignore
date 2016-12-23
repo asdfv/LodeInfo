@@ -1,7 +1,6 @@
 /StartApp.bat
 /static/TTupd
 /static/TTupdSelfUpd
-*.iml
 /target
 /src/main/resources/application.properties
 /.idea
