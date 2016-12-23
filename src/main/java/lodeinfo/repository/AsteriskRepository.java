@@ -4,11 +4,8 @@ import lodeinfo.model.CdrEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -91,59 +88,48 @@ public class AsteriskRepository {
 
     // CDR
     public List<CdrEntity> findCdrEntityBySrcAndDst(String numberToSearch) {
-        return jdbcAsterisk.query(CDR_FIND_BY_SRC_AND_DST, new Object[] { numberToSearch, numberToSearch }, new RowMapper<CdrEntity>() {
-            @Override
-            public CdrEntity mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                CdrEntity cdr = new CdrEntity();
+        return jdbcAsterisk.query(CDR_FIND_BY_SRC_AND_DST, new Object[] { numberToSearch, numberToSearch }, (resultSet, rowNum) -> {
+            CdrEntity cdr = new CdrEntity();
 
-                cdr.setRecordId(resultSet.getLong("record_id"));
-                cdr.setCalldate(resultSet.getString("calldate"));
-                cdr.setClid(resultSet.getString("clid"));
-                cdr.setClid(resultSet.getString("clid"));
-                cdr.setSrc(resultSet.getString("src"));
-                cdr.setDst(resultSet.getString("dst"));
-                cdr.setDcontext(resultSet.getString("dcontext"));
-                cdr.setChannel(resultSet.getString("channel"));
-                cdr.setDstchannel(resultSet.getString("dstchannel"));
-                cdr.setLastapp(resultSet.getString("lastapp"));
-                cdr.setLastdata(resultSet.getString("lastdata"));
-                cdr.setDuration(resultSet.getInt("duration"));
-                cdr.setBillsec(resultSet.getInt("billsec"));
-                cdr.setDisposition(resultSet.getString("disposition"));
-                cdr.setUniqueid(resultSet.getString("uniqueid"));
+            cdr.setRecordId(resultSet.getLong("record_id"));
+            cdr.setCalldate(resultSet.getString("calldate"));
+            cdr.setClid(resultSet.getString("clid"));
+            cdr.setSrc(resultSet.getString("src"));
+            cdr.setDst(resultSet.getString("dst"));
+            cdr.setDcontext(resultSet.getString("dcontext"));
+            cdr.setChannel(resultSet.getString("channel"));
+            cdr.setDstchannel(resultSet.getString("dstchannel"));
+            cdr.setLastapp(resultSet.getString("lastapp"));
+            cdr.setLastdata(resultSet.getString("lastdata"));
+            cdr.setDuration(resultSet.getInt("duration"));
+            cdr.setBillsec(resultSet.getInt("billsec"));
+            cdr.setDisposition(resultSet.getString("disposition"));
+            cdr.setUniqueid(resultSet.getString("uniqueid"));
 
-                return cdr;
-            }
+            return cdr;
         });
     }
 
     public List<CdrEntity> findCdrByCalldate(String dayToSearch) {
-        return jdbcAsterisk.query(CDR_FIND_BY_CALLDATE, new Object[] { dayToSearch }, new RowMapper<CdrEntity>() {
+        return jdbcAsterisk.query(CDR_FIND_BY_CALLDATE, new Object[] { dayToSearch }, (resultSet, rowNum) -> {
+            CdrEntity cdr = new CdrEntity();
 
-            @Override
-            public CdrEntity mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                CdrEntity cdr = new CdrEntity();
+            cdr.setRecordId(resultSet.getLong("record_id"));
+            cdr.setCalldate(resultSet.getString("calldate"));
+            cdr.setClid(resultSet.getString("clid"));
+            cdr.setSrc(resultSet.getString("src"));
+            cdr.setDst(resultSet.getString("dst"));
+            cdr.setDcontext(resultSet.getString("dcontext"));
+            cdr.setChannel(resultSet.getString("channel"));
+            cdr.setDstchannel(resultSet.getString("dstchannel"));
+            cdr.setLastapp(resultSet.getString("lastapp"));
+            cdr.setLastdata(resultSet.getString("lastdata"));
+            cdr.setDuration(resultSet.getInt("duration"));
+            cdr.setBillsec(resultSet.getInt("billsec"));
+            cdr.setDisposition(resultSet.getString("disposition"));
+            cdr.setUniqueid(resultSet.getString("uniqueid"));
 
-                cdr.setRecordId(resultSet.getLong("record_id"));
-                cdr.setCalldate(resultSet.getString("calldate"));
-                cdr.setClid(resultSet.getString("clid"));
-                cdr.setClid(resultSet.getString("clid"));
-                cdr.setSrc(resultSet.getString("src"));
-                cdr.setDst(resultSet.getString("dst"));
-                cdr.setDcontext(resultSet.getString("dcontext"));
-                cdr.setChannel(resultSet.getString("channel"));
-                cdr.setDstchannel(resultSet.getString("dstchannel"));
-                cdr.setLastapp(resultSet.getString("lastapp"));
-                cdr.setLastdata(resultSet.getString("lastdata"));
-                cdr.setDuration(resultSet.getInt("duration"));
-                cdr.setBillsec(resultSet.getInt("billsec"));
-                cdr.setDisposition(resultSet.getString("disposition"));
-                cdr.setUniqueid(resultSet.getString("uniqueid"));
-
-                return cdr;
-            }
+            return cdr;
         });
     }
-
-
 }
