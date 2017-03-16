@@ -14,7 +14,7 @@ myApp.controller('asteriskMonthController', ['$scope', '$http',
             return { monthName: ('0' + (index + 1)).slice(-2) + ' - ' + month };
         });
 
-        $scope.monthStat.years = ('2013 2014 2015 2016').split(' ').map(function (year) {
+        $scope.monthStat.years = ('2013 2014 2015 2016 2017').split(' ').map(function (year) {
             return { year: year };
         });
 
